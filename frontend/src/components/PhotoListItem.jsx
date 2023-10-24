@@ -1,9 +1,10 @@
 import React from "react";
 
 import "../styles/PhotoListItem.scss";
+
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({photoData}) => {
+const PhotoListItem = ( { photoData }) => {
 return (
 
   <div className="photo-list__item">
