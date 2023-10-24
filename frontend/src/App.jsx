@@ -1,7 +1,10 @@
 import React from 'react';
 
 import PhotoListItem from './components/PhotoListItem';
+import PhotoFavButton from './components/PhotoFavButton';
 import './App.scss';
+
+
 const sampleDataForPhotoListItem = {
   id: "1",
   location: {
@@ -18,12 +21,16 @@ const App = () => {
   const photos = new Array(3).fill(sampleDataForPhotoListItem);
   return (
     <div className="App">
-    {photos.map((photo, index) => (
-      <PhotoListItem key={index} photoData={photo} />
-    ))}
-  </div>
-);
+      {photos.map((photo, index) => (
+        <div key={index} className="photo-item-wrapper">
+          <PhotoListItem photoData={photo} />
+          
+        </div>
 
-};
 
+
+      ))}
+    </div>
+  );
+}
 export default App;

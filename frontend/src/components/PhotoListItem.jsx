@@ -1,13 +1,13 @@
 import React from "react";
 
 import "../styles/PhotoListItem.scss";
-
-
+import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = ({photoData}) => {
 return (
 
   <div className="photo-list__item">
+    <PhotoFavButton/>
   <img src={photoData.imageSource} alt="Uploaded by user" className="photo-list__image" />
   <div className="photo-info">
     <div className="photo-list__user-location">
