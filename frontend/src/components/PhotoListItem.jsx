@@ -10,13 +10,13 @@ return (
 
   <div className="photo-list__item">
     <PhotoFavButton/>
-  <img src={photoData.urls.full} alt="Uploaded by user" className="photo-list__image" />
+  <img src={photoData.urls.regular} alt="Uploaded by user" className="photo-list__image" />
   <div className="photo-info">
     <div className="photo-list__user-location">
       {photoData.location.city}, {photoData.location.country}
     </div>
     <div className="photo-list__user-info">
-      <img src={photoData.urls.regular} alt={photoData.urls.regular} className="photo-list__user-profile" />
+      <img src={photoData.user.profile} alt={photoData.user.profile} className="photo-list__user-profile" />
       <span className="username">{photoData.username}</span>
     </div>
   </div>
