@@ -1,24 +1,26 @@
 import React from "react";
+
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photoData }) => { 
-  // Ensure that photoData has an 'id' field
+const PhotoListItem = ({ item, updateFavouritedPhotoIDs, updateModalData, photoIDs }) => {
+
   return (
     <div className="photo-list__item">
-      {/* Pass the photoId to the PhotoFavButton */}
-      <PhotoFavButton photoId={photoData.id} />
-      <img src={photoData.urls.regular} alt="Uploaded by user" className="photo-list__image" />
-      <div className="photo-info">
-        <div className="photo-list__user-location">
-          {photoData.location.city}, {photoData.location.country}
-        </div>
-        <div className="photo-list__user-info">
-          <img src={photoData.user.profile} alt={photoData.user.name} className="photo-list__user-profile" />
-          <span className="username">{photoData.user.username}</span>
+      <PhotoFavButton
+        updateFavouritedPhotoIDs={updateFavouritedPhotoIDs}
+        item={item}
+        photoIDs={photoIDs}
+      />
+      <img className="photo-list__image" onClick={() => updateModalData(true, item)} src={item.urls.regular} alt="image" />
+      <div className="photo-list__user-details">
+        <img className="photo-list__user-profile" src={item.user.profile} alt="profile photos" />
+        <div>
+          <p className="photo-list__user-info">{item.user.username}</p>
+          <p className="photo-list__user-location">{item.location.city} {item.location.country}</p>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

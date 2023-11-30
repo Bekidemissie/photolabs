@@ -1,28 +1,24 @@
-// PhotoFavButton.js
-import React, { useContext } from 'react';
-import '../styles/PhotoFavButton.scss';
-import { FavoritesContext } from './FavoritesContext'; // Import the context
+import React from 'react';
+
 import FavIcon from './FavIcon';
+import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton({ photoId }) { // Accept photoId as a prop
-  const { addFavorite, removeFavorite, isFavorite } = useContext(FavoritesContext);
-  const isFavorited = isFavorite(photoId);
+const PhotoFavButton = ({ updateFavouritedPhotoIDs, item, photoIDs }) => {
 
-  const toggleFavorite = () => {
-    if (isFavorited) {
-      removeFavorite(photoId);
-    } else {
-      addFavorite(photoId);
-    }
+  const clickOnIcon = () => {
+    updateFavouritedPhotoIDs(item.id);
   };
 
   return (
-    <div className="photo-list__fav-icon" onClick={toggleFavorite}>
+    <div className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={isFavorited}/>
+        <FavIcon
+          clickOnIcon={clickOnIcon}
+          selected={photoIDs.indexOf(item.id) > -1}
+        />
       </div>
     </div>
   );
-}
+};
 
 export default PhotoFavButton;

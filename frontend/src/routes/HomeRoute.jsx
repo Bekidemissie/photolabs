@@ -1,30 +1,35 @@
-import React, { useState } from 'react';
-import TopNavigationBar from '../components/TopNavigationBar';
-import PhotoDetailsModal from './PhotoDetailsModal';
+import React from 'react';
+
 import '../styles/HomeRoute.scss';
+import PhotoList from '../components/PhotoList';
+import TopNavigationBar from '../components/TopNavigationBar';
 
-const HomeRoute = () => {
-  // State to manage if the modal is visible
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  // Function to open the modal
-  const openModal = () => {
-    setModalVisible(true);
-  };
-
-  // Function to close the modal
-  const closeModal = () => {
-    setModalVisible(false);
-  };
+const HomeRoute = (props) => {
+  const {
+    topics,
+    photos,
+    updateFavouritedPhotoIDs,
+    isFavPhotoExist,
+    updateModalData,
+    updatePhotosByTopics,
+    photoIDs
+  } = props;
 
   return (
     <div className="home-route">
-      <TopNavigationBar />
-      {/* Button to open modal */}
-      <button onClick={openModal}>Show Photo Details</button>
-      
-      {/* Conditionally render the PhotoDetailsModal */}
-      {isModalVisible && <PhotoDetailsModal closeModal={closeModal} />}
+      <TopNavigationBar
+        topics={topics}
+        isFavPhotoExist={isFavPhotoExist}
+        updatePhotosByTopics={updatePhotosByTopics}
+      />
+      <div className="photo-list">
+        <PhotoList
+          photos={photos}
+          updateFavouritedPhotoIDs={updateFavouritedPhotoIDs}
+          updateModalData={updateModalData}
+          photoIDs={photoIDs}
+        />
+      </div>
     </div>
   );
 };

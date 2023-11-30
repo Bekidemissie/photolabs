@@ -1,30 +1,21 @@
-import React, { useContext } from 'react';
-import FavBadge from './FavBadge';
+import React from 'react';
+
 import '../styles/TopNavigationBar.scss';
-import PhotoList from './PhotoList';
 import TopicList from './TopicList';
-import { FavoritesContext } from './FavoritesContext'; // Import the context
+import FavBadge from './FavBadge';
 
-const TopNavigationBar = () => {
-  // Use the useContext hook to access the FavoritesContext
-  const favoritesContext = useContext(FavoritesContext);
+const TopNavigation = ({ topics, isFavPhotoExist, updatePhotosByTopics }) => {
 
-  // You can now access favorites, addFavorite, removeFavorite, etc., from favoritesContext
-  // For example, to check if there are any favorites you can check favoritesContext.favorites array length
-
-  const hasFavorites = favoritesContext.favorites.length > 0;
-
-  return ( 
-    <>
-      <div className="top-nav-bar">
-        <span className="top-nav-bar__logo">PhotoLabs</span>
-        {/* Pass a boolean to indicate if there are favorites */}
-        <FavBadge isFavPhotoExist={hasFavorites} />
-      </div>
-      <TopicList />
-      <PhotoList />
-    </>
+  return (
+    <div className="top-nav-bar">
+      <span className="top-nav-bar__logo" onClick={() => updatePhotosByTopics(false)}>PhotoLabs</span>
+      <TopicList
+        topics={topics}
+        updatePhotosByTopics={updatePhotosByTopics}
+      />
+      <FavBadge isFavPhotoExist={isFavPhotoExist} />
+    </div>
   );
-}
+};
 
-export default TopNavigationBar;
+export default TopNavigation;
