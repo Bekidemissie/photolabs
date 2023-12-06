@@ -3,26 +3,23 @@ import React from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-// Component for rendering the favorite icon button
-const FavIconButton = ({ isFavorite, onToggle }) => {
-  const handleIconClick = () => {
-    onToggle();
+const PhotoFavButton = ({ updateFavouritedPhotoIDs, item, photoIDs }) => {
+
+  const clickOnIcon = () => {
+    updateFavouritedPhotoIDs(item.id);
+    
   };
 
-   // Rendering the favorite icon button
   return (
     <div className="photo-list__fav-icon">
-    <div className="photo-list__fav-icon-svg" onClick={handleIconClick}>
-      <FavIcon selected={isFavorite} />
-    </div>
+      <div className="photo-list__fav-icon-svg">
+        <FavIcon
+          clickOnIcon={clickOnIcon}
+          selected={photoIDs.indexOf(item.id) > -1}
+        />
+      </div>
     </div>
   );
 };
 
-export default FavIconButton;
-
-
-
-
-
-
+export default PhotoFavButton;
