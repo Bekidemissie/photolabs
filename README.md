@@ -2,9 +2,7 @@
 The PhotoLabs project for the Web Development React course programming.
 
 # Photolabs
-The PhotoLabs project for the Web Development React course programming. The Photolabs allows users to view photos in different contexts. It allows users to select favourite photos. The user can see all photos after clicking the photolabs logo. It allows users to see photo modal seperate window with user details and simmilar photos
-
-
+The PhotoLabs project is a React-based single-page application designed for viewing stock photos in various contexts. The project will be developed in four phases, starting with the construction of isolated components and gradually progressing towards managing application state, integrating an API for data retrieval, and implementing advanced React patterns.
 ## Setup
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
